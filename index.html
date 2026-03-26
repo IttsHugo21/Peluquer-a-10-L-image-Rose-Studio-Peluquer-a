@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'image Rose Studio | Peluquería en Zaragoza</title>
+    
+    <!-- Configuración de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899', // Color principal Rosa
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        },
+                        dark: '#1f2937'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Estilos base y utilidades */
+        html { scroll-behavior: smooth; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(31, 41, 55, 0.6), rgba(31, 41, 55, 0.7)), url('https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Scrollbar personalizado para los modales legales */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #fdf2f8; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #f9a8d4; 
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #ec4899; 
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-stone-50 flex flex-col min-h-screen">
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-40 top-0 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="font-serif text-2xl font-bold text-dark tracking-wide">
+                        L'image <span class="text-brand-500">Rose</span> Studio
+                    </span>
+                </div>
+                
+                <!-- Menú Desktop -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Inicio</a>
+                    <a href="#servicios" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Servicios</a>
+                    <a href="#contacto" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Ubicación & Contacto</a>
+                    <a href="https://www.instagram.com/limage_rose_studio" target="_blank" class="text-brand-500 hover:text-brand-600 transition-colors">
+                        <i data-lucide="instagram"></i>
+                    </a>
+                    <a href="tel:+34647221740" class="bg-brand-500 text-white px-5 py-2 rounded-full font-medium hover:bg-brand-600 transition-colors shadow-md flex items-center gap-2">
+                        <i data-lucide="phone" class="w-4 h-4"></i> Pedir Cita
+                    </a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-500 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#inicio" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50 rounded-md">Inicio</a>
+                <a href="#servicios" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50 rounded-md">Servicios</a>
+                <a href="#contacto" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50 rounded-md">Ubicación & Contacto</a>
+                <div class="pt-4 flex flex-col gap-3 px-3">
+                    <a href="https://www.instagram.com/limage_rose_studio" target="_blank" class="flex items-center gap-2 text-brand-600 font-medium">
+                        <i data-lucide="instagram" class="w-5 h-5"></i> Síguenos en Instagram
+                    </a>
+                    <a href="tel:+34647221740" class="flex justify-center items-center gap-2 bg-brand-500 text-white px-4 py-3 rounded-md font-medium shadow-sm">
+                        <i data-lucide="phone" class="w-5 h-5"></i> 647 22 17 40
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg h-[85vh] flex items-center justify-center mt-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-50/90"></div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <div class="inline-flex items-center justify-center gap-2 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-white mb-6 border border-white/30 shadow-lg">
+                <div class="flex text-yellow-400">
+                    <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                    <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                    <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                    <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                    <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                </div>
+                <span class="font-medium text-sm tracking-wide">5,0 (53 Reseñas)</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-serif text-white font-bold mb-6 drop-shadow-lg">
+                Realza tu belleza natural
+            </h1>
+            <p class="text-xl text-gray-100 mb-10 max-w-2xl mx-auto font-light drop-shadow">
+                Bienvenida a L'image Rose Studio. Tu peluquería de confianza en el corazón de Zaragoza. Expertos en color, corte y cuidado capilar.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+34647221740" class="bg-brand-500 text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-brand-600 transition-all transform hover:scale-105 shadow-xl flex items-center justify-center gap-2">
+                    <i data-lucide="calendar" class="w-5 h-5"></i> Reserva tu cita
+                </a>
+                <a href="#contacto" class="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-white hover:text-dark transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="map-pin" class="w-5 h-5"></i> Cómo llegar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reseñas Destacadas -->
+    <section class="py-12 bg-stone-50 -mt-10 relative z-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-brand-50 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl font-serif font-bold text-dark mb-2">Valoración Excelente</h2>
+                    <p class="text-gray-500 mb-4">Basado en 53 reseñas de nuestros clientes</p>
+                    <div class="flex items-center justify-center md:justify-start gap-2 text-yellow-400">
+                        <i data-lucide="star" class="fill-current w-6 h-6"></i>
+                        <i data-lucide="star" class="fill-current w-6 h-6"></i>
+                        <i data-lucide="star" class="fill-current w-6 h-6"></i>
+                        <i data-lucide="star" class="fill-current w-6 h-6"></i>
+                        <i data-lucide="star" class="fill-current w-6 h-6"></i>
+                        <span class="text-2xl font-bold text-dark ml-2">5,0</span>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-brand-50 p-6 rounded-xl relative">
+                        <i data-lucide="quote" class="absolute top-4 right-4 text-brand-200 w-8 h-8"></i>
+                        <p class="text-gray-700 italic relative z-10">"Atención inmejorable y un resultado perfecto. Han sabido captar exactamente lo que quería. ¡100% recomendable!"</p>
+                    </div>
+                    <div class="bg-brand-50 p-6 rounded-xl relative hidden sm:block">
+                        <i data-lucide="quote" class="absolute top-4 right-4 text-brand-200 w-8 h-8"></i>
+                        <p class="text-gray-700 italic relative z-10">"Un trato exquisito. Los productos que utilizan son de primerísima calidad y el asesoramiento es fantástico."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-500 font-medium tracking-wider uppercase text-sm">Nuestra Especialidad</span>
+                <h2 class="text-4xl font-serif font-bold text-dark mt-2 mb-4">Servicios de Peluquería</h2>
+                <div class="w-24 h-1 bg-brand-300 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Servicio 1 -->
+                <div class="group p-8 rounded-2xl bg-stone-50 hover:bg-brand-50 transition-colors duration-300 border border-transparent hover:border-brand-100 text-center">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-brand-500 group-hover:scale-110 transition-transform">
+                        <i data-lucide="scissors"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-dark mb-3">Corte y Estilo</h3>
+                    <p class="text-gray-600">Asesoramiento personalizado para encontrar el corte que mejor se adapte a tus facciones y estilo de vida.</p>
+                </div>
+                <!-- Servicio 2 -->
+                <div class="group p-8 rounded-2xl bg-stone-50 hover:bg-brand-50 transition-colors duration-300 border border-transparent hover:border-brand-100 text-center">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-brand-500 group-hover:scale-110 transition-transform">
+                        <i data-lucide="palette"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-dark mb-3">Color y Mechas</h3>
+                    <p class="text-gray-600">Especialistas en balayage, babylights y coloración técnica utilizando productos de alta calidad que protegen tu cabello.</p>
+                </div>
+                <!-- Servicio 3 -->
+                <div class="group p-8 rounded-2xl bg-stone-50 hover:bg-brand-50 transition-colors duration-300 border border-transparent hover:border-brand-100 text-center">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-brand-500 group-hover:scale-110 transition-transform">
+                        <i data-lucide="sparkles"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-dark mb-3">Tratamientos</h3>
+                    <p class="text-gray-600">Hidratación profunda, queratina, botox capilar y tratamientos reconstructores para devolver la salud a tu pelo.</p>
+                </div>
+                <!-- Servicio 4 -->
+                <div class="group p-8 rounded-2xl bg-stone-50 hover:bg-brand-50 transition-colors duration-300 border border-transparent hover:border-brand-100 text-center">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-brand-500 group-hover:scale-110 transition-transform">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-dark mb-3">Eventos Especiales</h3>
+                    <p class="text-gray-600">Peinados y recogidos para bodas, comuniones y eventos. Realzamos tu belleza para esos días inolvidables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información y Contacto -->
+    <section id="contacto" class="py-20 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Info -->
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-stone-200">
+                    <h2 class="text-3xl font-serif font-bold text-dark mb-8">Información de Contacto</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-brand-100 p-3 rounded-full text-brand-600 shrink-0">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark">Dirección</h4>
+                                <p class="text-gray-600 mt-1">C. de Héroes del Silencio, 1<br>50008 Zaragoza<br><span class="text-sm text-gray-500">(J4V8+54 Zaragoza)</span></p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="bg-brand-100 p-3 rounded-full text-brand-600 shrink-0">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark">Teléfono de Citas</h4>
+                                <a href="tel:+34647221740" class="text-brand-600 hover:text-brand-700 font-medium text-lg mt-1 block transition-colors">647 22 17 40</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="bg-brand-100 p-3 rounded-full text-brand-600 shrink-0">
+                                <i data-lucide="clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark">Horario Comercial</h4>
+                                <ul class="text-gray-600 mt-2 space-y-1">
+                                    <li class="flex justify-between w-48"><span>Lunes a Viernes:</span> <span>10:00 - 19:00</span></li>
+                                    <li class="flex justify-between w-48"><span>Sábados:</span> <span>Consultar</span></li>
+                                    <li class="flex justify-between w-48 text-gray-400"><span>Domingos:</span> <span>Cerrado</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 pt-4 border-t border-gray-100">
+                            <a href="https://www.instagram.com/limage_rose_studio" target="_blank" class="flex items-center gap-3 text-dark hover:text-brand-600 transition-colors group">
+                                <div class="bg-gray-100 p-3 rounded-full group-hover:bg-brand-100 group-hover:text-brand-600 transition-colors">
+                                    <i data-lucide="instagram"></i>
+                                </div>
+                                <span class="font-medium">Síguenos en @limage_rose_studio</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapa -->
+                <div class="h-[500px] rounded-2xl overflow-hidden shadow-sm border border-stone-200">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=C.+de+Héroes+del+Silencio,+1,+50008+Zaragoza&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer principal -->
+    <footer class="bg-dark text-white mt-auto pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+                <!-- Marca -->
+                <div>
+                    <span class="font-serif text-2xl font-bold tracking-wide text-white mb-4 block">
+                        L'image <span class="text-brand-400">Rose</span> Studio
+                    </span>
+                    <p class="text-gray-400 text-sm mt-4 leading-relaxed max-w-sm">
+                        Tu espacio de belleza y cuidado personal en Zaragoza. Profesionales apasionados por realzar tu mejor versión con los mejores productos del mercado.
+                    </p>
+                </div>
+                
+                <!-- Enlaces rápidos -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4 font-serif">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#inicio" class="hover:text-brand-400 transition-colors">Inicio</a></li>
+                        <li><a href="#servicios" class="hover:text-brand-400 transition-colors">Nuestros Servicios</a></li>
+                        <li><a href="#contacto" class="hover:text-brand-400 transition-colors">Ubicación y Horario</a></li>
+                        <li><a href="https://www.instagram.com/limage_rose_studio" target="_blank" class="hover:text-brand-400 transition-colors">Instagram</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4 font-serif">Información Legal</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><button onclick="openModal('modal-aviso')" class="hover:text-brand-400 transition-colors text-left">Aviso Legal</button></li>
+                        <li><button onclick="openModal('modal-privacidad')" class="hover:text-brand-400 transition-colors text-left">Política de Privacidad</button></li>
+                        <li><button onclick="openModal('modal-cookies')" class="hover:text-brand-400 transition-colors text-left">Política de Cookies</button></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+                <p>&copy; 2026 L'image Rose Studio Peluquería. Todos los derechos reservados.</p>
+                <div class="flex items-center gap-2">
+                    <span>Zaragoza, España</span>
+                    <span class="w-1 h-1 bg-gray-500 rounded-full"></span>
+                    <span>Valoración: 5.0 (53)</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         SISTEMA DE MODALES LEGALES (COMPLETOS)
+         ========================================== -->
+
+    <!-- Modal Base (Plantilla oculta para el overlay) -->
+    <div id="legal-overlay" class="fixed inset-0 bg-dark/80 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 sm:p-6">
+        
+        <!-- Contenedor Modal: AVISO LEGAL -->
+        <div id="modal-aviso" class="legal-content hidden bg-white w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl flex flex-col transform scale-95 transition-transform duration-300">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white rounded-t-2xl z-10">
+                <h2 class="text-2xl font-serif font-bold text-dark">Aviso Legal</h2>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-brand-600 hover:bg-brand-50 p-2 rounded-full transition-colors">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto custom-scrollbar text-gray-600 text-sm space-y-6">
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">1. Información General</h3>
+                    <p>En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSICE), se reflejan a continuación los siguientes datos:</p>
+                    <ul class="list-disc ml-6 mt-2 space-y-1">
+                        <li><strong>Titular:</strong> L'image Rose Studio Peluquería (en adelante, "El Titular").</li>
+                        <li><strong>Dirección:</strong> C. de Héroes del Silencio, 1, 50008 Zaragoza, España.</li>
+                        <li><strong>Teléfono de contacto:</strong> 647 22 17 40</li>
+                        <li><strong>Actividad comercial:</strong> Servicios de peluquería, estética y cuidado personal.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">2. Uso del Sitio Web</h3>
+                    <p>El acceso y/o uso de este portal atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, las Condiciones Generales de Uso aquí reflejadas. La página web proporciona el acceso a multitud de informaciones, servicios o datos en Internet pertenecientes a L'image Rose Studio.</p>
+                    <p class="mt-2">El USUARIO asume la responsabilidad del uso del portal. El USUARIO se compromete a hacer un uso adecuado de los contenidos y servicios que se ofrecen a través de su portal.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">3. Propiedad Intelectual e Industrial</h3>
+                    <p>L'image Rose Studio por sí o como cesionaria, es titular de todos los derechos de propiedad intelectual e industrial de su página web, así como de los elementos contenidos en la misma (a título enunciativo, imágenes, sonido, audio, vídeo, software o textos; marcas o logotipos, combinaciones de colores, estructura y diseño, etc.).</p>
+                    <p class="mt-2">Quedan expresamente prohibidas la reproducción, la distribución y la comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los contenidos de esta página web, con fines comerciales, en cualquier soporte y por cualquier medio técnico, sin la autorización de L'image Rose Studio.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">4. Exclusión de Garantías y Responsabilidad</h3>
+                    <p>El Titular no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">5. Modificaciones</h3>
+                    <p>El Titular se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su portal, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en la que éstos aparezcan presentados o localizados en su portal.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenedor Modal: POLÍTICA DE PRIVACIDAD -->
+        <div id="modal-privacidad" class="legal-content hidden bg-white w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl flex flex-col transform scale-95 transition-transform duration-300">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white rounded-t-2xl z-10">
+                <h2 class="text-2xl font-serif font-bold text-dark">Política de Privacidad</h2>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-brand-600 hover:bg-brand-50 p-2 rounded-full transition-colors">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto custom-scrollbar text-gray-600 text-sm space-y-6">
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">1. Responsable del Tratamiento</h3>
+                    <p>De conformidad con lo dispuesto en el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), le informamos que los datos personales aportados serán tratados por L'image Rose Studio, con domicilio en C. de Héroes del Silencio, 1, 50008 Zaragoza.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">2. Finalidad del Tratamiento</h3>
+                    <p>Los datos personales recogidos (principalmente a través de contacto telefónico, redes sociales o en el propio establecimiento) serán utilizados para las siguientes finalidades:</p>
+                    <ul class="list-disc ml-6 mt-2 space-y-1">
+                        <li>Gestión de citas previas y agenda de la peluquería.</li>
+                        <li>Prestación de los servicios de peluquería y estética solicitados.</li>
+                        <li>Atención al cliente, resolución de dudas y consultas.</li>
+                        <li>Gestión administrativa, contable y fiscal básica para la facturación de servicios.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">3. Legitimación</h3>
+                    <p>La base legal para el tratamiento de sus datos es la ejecución de un contrato o precontrato (la reserva y prestación del servicio de peluquería), así como el cumplimiento de obligaciones legales por parte del responsable (facturación) y el consentimiento expreso otorgado en caso de comunicaciones comerciales.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">4. Conservación de los Datos</h3>
+                    <p>Los datos proporcionados se conservarán mientras se mantenga la relación comercial o durante los años necesarios para cumplir con las obligaciones legales (generalmente 5 años según la normativa fiscal). Posteriormente, los datos serán suprimidos con medidas de seguridad adecuadas para garantizar la anonimización de los mismos o la destrucción total de los mismos.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">5. Derechos de los Usuarios (Derechos ARCO)</h3>
+                    <p>Cualquier persona tiene derecho a obtener confirmación sobre si en L'image Rose Studio estamos tratando datos personales que les conciernan, o no. Las personas interesadas tienen derecho a:</p>
+                    <ul class="list-disc ml-6 mt-2 space-y-1">
+                        <li>Acceder a sus datos personales.</li>
+                        <li>Solicitar la rectificación de los datos inexactos.</li>
+                        <li>Solicitar su supresión cuando, entre otros motivos, los datos ya no sean necesarios.</li>
+                        <li>Solicitar la limitación de su tratamiento o la portabilidad de los datos.</li>
+                        <li>Oponerse al tratamiento.</li>
+                    </ul>
+                    <p class="mt-2">Podrá ejercer estos derechos dirigiéndose a nuestro establecimiento en Zaragoza o contactándonos a través de nuestras vías de comunicación oficiales.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenedor Modal: POLÍTICA DE COOKIES -->
+        <div id="modal-cookies" class="legal-content hidden bg-white w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl flex flex-col transform scale-95 transition-transform duration-300">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white rounded-t-2xl z-10">
+                <h2 class="text-2xl font-serif font-bold text-dark">Política de Cookies</h2>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-brand-600 hover:bg-brand-50 p-2 rounded-full transition-colors">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto custom-scrollbar text-gray-600 text-sm space-y-6">
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">1. ¿Qué son las cookies?</h3>
+                    <p>Una cookie es un fichero que se descarga en su ordenador al acceder a determinadas páginas web. Las cookies permiten a una página web, entre otras cosas, almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información que contengan y de la forma en que utilice su equipo, pueden utilizarse para reconocer al usuario.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">2. ¿Qué tipos de cookies utiliza esta página web?</h3>
+                    <p>Nuestra página web utiliza un enfoque minimalista y respetuoso con su privacidad. Principalmente utilizamos:</p>
+                    <ul class="list-disc ml-6 mt-2 space-y-2">
+                        <li><strong>Cookies técnicas (Propias):</strong> Son aquellas que permiten al usuario la navegación a través de una página web, plataforma o aplicación y la utilización de las diferentes opciones o servicios que en ella existan (ej. controlar el tráfico, identificar la sesión, recordar elementos, utilizar elementos de seguridad durante la navegación).</li>
+                        <li><strong>Cookies de terceros (Mapas y Redes):</strong> Al integrar mapas de Google Maps o enlaces a Instagram, estas plataformas pueden instalar cookies para rastrear el uso de sus componentes de acuerdo con sus propias políticas de privacidad.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">3. Revocación y eliminación de cookies</h3>
+                    <p>Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo mediante la configuración de las opciones del navegador instalado en tu ordenador:</p>
+                    <ul class="list-disc ml-6 mt-2 space-y-1">
+                        <li><strong>Google Chrome:</strong> Configuración > Privacidad y seguridad > Cookies y otros datos de sitios.</li>
+                        <li><strong>Mozilla Firefox:</strong> Opciones > Privacidad y Seguridad > Cookies y datos del sitio.</li>
+                        <li><strong>Safari:</strong> Preferencias > Privacidad > Bloquear todas las cookies.</li>
+                        <li><strong>Microsoft Edge:</strong> Configuración > Privacidad, búsqueda y servicios > Borrar datos de exploración.</li>
+                    </ul>
+                    <p class="mt-2">Tenga en cuenta que si bloquea el uso de cookies en su navegador es posible que algunos servicios o funcionalidades de la página web no estén disponibles.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-dark mb-2">4. Aceptación de la Política de Cookies</h3>
+                    <p>El uso continuado de nuestro sitio tras haber sido informado en el banner de cookies inferior, o hacer clic en "Aceptar", implica que usted consiente el uso de las cookies descritas en esta política. L'image Rose Studio asume que usted acepta el uso de cookies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner de Cookies (Aparece al inicio) -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-dark text-white p-4 shadow-2xl z-40 transform translate-y-full transition-transform duration-500 ease-out">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-sm text-gray-300">
+                Utilizamos cookies propias y de terceros para asegurar el funcionamiento de la web y analizar su uso. 
+                Puedes leer más en nuestra <button onclick="openModal('modal-cookies')" class="text-brand-400 hover:text-brand-300 underline">Política de Cookies</button.
+            </div>
+            <div class="flex gap-3 shrink-0 w-full sm:w-auto">
+                <button onclick="acceptCookies()" class="flex-1 sm:flex-none bg-brand-500 hover:bg-brand-600 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors">
+                    Aceptar todas
+                </button>
+                <button onclick="acceptCookies()" class="flex-1 sm:flex-none bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors">
+                    Solo esenciales
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         LÓGICA JAVASCRIPT
+         ========================================== -->
+    <script>
+        // Inicializar Iconos
+        lucide.createIcons();
+
+        // Control del Menú Móvil
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú móvil al hacer clic en un enlace
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // ==========================================
+        // CONTROL DE MODALES LEGALES
+        // ==========================================
+        const overlay = document.getElementById('legal-overlay');
+        const modals = document.querySelectorAll('.legal-content');
+
+        function openModal(modalId) {
+            // Ocultar todos los modales primero
+            modals.forEach(m => {
+                m.classList.add('hidden');
+                m.classList.remove('scale-100');
+                m.classList.add('scale-95');
+            });
+            
+            // Mostrar overlay
+            overlay.classList.remove('hidden');
+            // Pequeño delay para la animación de opacidad
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                overlay.classList.add('opacity-100');
+            }, 10);
+
+            // Mostrar el modal específico
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+            // Animación de entrada
+            setTimeout(() => {
+                modal.classList.remove('scale-95');
+                modal.classList.add('scale-100');
+            }, 50);
+
+            // Bloquear scroll de la página de fondo
+            document.body.style.overflow = 'hidden';
+            
+            // Cerrar menú móvil si estaba abierto
+            mobileMenu.classList.add('hidden');
+        }
+
+        function closeModals() {
+            // Animación de salida overlay
+            overlay.classList.remove('opacity-100');
+            overlay.classList.add('opacity-0');
+            
+            // Animación de salida modales
+            modals.forEach(m => {
+                m.classList.remove('scale-100');
+                m.classList.add('scale-95');
+            });
+
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+                modals.forEach(m => m.classList.add('hidden'));
+                // Restaurar scroll
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        // Cerrar modal al hacer clic en el fondo oscuro
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                closeModals();
+            }
+        });
+
+        // Cerrar con la tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
+                closeModals();
+            }
+        });
+
+        // ==========================================
+        // CONTROL BANNER DE COOKIES
+        // ==========================================
+        const cookieBanner = document.getElementById('cookie-banner');
+        
+        // Simular comprobación de cookies
+        setTimeout(() => {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                cookieBanner.classList.remove('translate-y-full');
+            }
+        }, 1500); // Aparece 1.5s después de cargar
+
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.classList.add('translate-y-full');
+        }
+    </script>
+</body>
+</html>
